@@ -1,2 +1,14 @@
-# Cadastro_de_Curriculo
-Aplicando os aprendizados da linguagem PHP e SQL
+# Módulo Outras Formações - Sistema de Currículos
+
+## Descrição
+Módulo responsável por gerenciar registros complementares de formação do usuário logado, integrando as camadas Model, View e Controller sob o padrão arquitetural MVC.
+
+## Rotas e Ações (Navegacao.php)
+- **btnAddOF**: Disparado pelo formulário de cadastro; aciona o método `inserir()` do `OutrasFormacoesController`.
+- **btnExcluirOF**: Disparado pela tabela de listagem; aciona o método `remover()` passando o ID do registro correspondente.
+
+## Dependências
+- `ConexaoBD.php` (Conexão com MySQL)
+- `OutrasFormacoes.php` (Camada Model)
+- `OutrasFormacoesController.php` (Camada Controller)
+- Framework Bootstrap e FontAwesome para estilização da interface.
