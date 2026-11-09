@@ -100,5 +100,35 @@ switch ($_POST) {
             exit;
         }
         break;
+
+        // --- Experiência Profissional: Inserir --- //
+    case isset($_POST["btnAddExp"]):
+        require_once "ExperienciaProfissionalController.php";
+        include_once "../Model/Usuario.php";
+        $expController = new ExperienciaProfissionalController();
+        if ($expController->inserir(
+            date("Y-m-d", strtotime($_POST["txtInicioExp"])),
+            date("Y-m-d", strtotime($_POST["txtFimExp"])),
+            $_POST["txtEmpresaExp"],
+            $_POST["txtDescExp"],
+            unserialize($_SESSION["Usuario"])->getID()
+        ) != false) {
+            include_once "../View/informacaoInserida.php";
+        } else {
+            include_once "../View/operacaoNaoRealizada.php";
+        }
+        break;
+
+    // --- Experiência Profissional: Excluir --- //
+    case isset($_POST["btnExcluirExp"]):
+        require_once "ExperienciaProfissionalController.php";
+        include_once "../Model/Usuario.php";
+        $expController = new ExperienciaProfissionalController();
+        if ($expController->remover($_POST["idExp"]) == true) {
+            include_once "../View/informacaoExcluida.php";
+        } else {
+            include_once "../View/operacaoNaoRealizada.php";
+        }
+        break;
 }
 ?>

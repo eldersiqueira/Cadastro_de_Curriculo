@@ -30,10 +30,22 @@ class UsuarioController {
         
         $r = $usuario->inserirBD();
         if($r) {
-            // Guarda o usuário na sessão após o cadastro para já logar direto
             $_SESSION['Usuario'] = serialize($usuario);
         }
         return $r;
+    }
+
+    public function gerarListaUsuarios() {
+        require_once '../Model/Usuario.php';
+        $usuario = new Usuario();
+        return $usuario->listaUsuarios();
+    }
+
+    public function buscarUsuario($id) {
+        require_once '../Model/Usuario.php';
+        $usuario = new Usuario();
+        $usuario->carregarUsuarioPorID($id);
+        return $usuario;
     }
 }
 ?>
